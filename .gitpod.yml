@@ -1,0 +1,17 @@
+tasks:
+  - init: >
+      npm install &&
+      sed -ri "s/hostname\s+\s':'\s+\sprocess\.env\.HMR_PORT/hostname.replace(\/^(\\d+)\/, process.env.HMR_PORT) + ':443'/" ./node_modules/parcel-bundler/src/builtins/hmr-runtime.js &&
+  - command: > 
+      npm start &&
+      gp await-port 1234 && gp preview $(gp url 1234)
+
+ports:
+  - port: 1234
+    onOpen : ignore
+  - port: 3000
+    onOpen : ignore
+
+vscode:
+  extensions:
+    - octref.vetur@0.23.0:TEzauMObB6f3i2JqlvrOpA==
