@@ -17,15 +17,10 @@ For this repo, the `index.html` file includes some base styles from the ObserveI
 assets that are assumed dependencies. These include jQuery and Marketo. jQuery can probably be dropped, but
 you would need to go through and replace some of the jQuery shortcut code.
 
-### Marketo
-When the user reaches the results screen, a form is presented that is currently provided by Marketo. The
-form has fields that the calculated results depend on—Industry and Organization Size. Please see the 
-`Results.vue` file for more detail.
-
 ### Google Sheets
 Most of the backend of the form is provided by Google Sheets. The sheet must be published to the web and
 the privacy needs to be publically visible. The sheet currently used on ObserveIT can be found 
-[here](https://docs.google.com/spreadsheets/d/1Bd2nTEP0YTTnsQfR6NyJ6GjcNz30WykgM5HmFuv4uV0/edit#gid=0).
+[here](https://docs.google.com/spreadsheets/d/1rQI1MHGlxNdbtSjnChCNnjrSJXMuEamyxZ_mJvN-98c/edit#gid=0).
 
 ### Configuration
 The configuration was provided to the vue component through the Wordpress system, so it had more information than
@@ -33,6 +28,3 @@ was necessary for functionality. I did my best to cut out unecessary properties 
 may want to reorganize according to your needs.
 
 See [config.js](src/config.js).
-
-Plase note that clientDownload was added as an configuration option (boolean). If you set it to true,
-you do not need to set up a separate endpoint to handle the PDF download.
