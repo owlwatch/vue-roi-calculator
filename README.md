@@ -1,5 +1,5 @@
 # Vue ROI Calculator 
-A Risk Assessment questionnaire built with Vue and using Google Sheets for the backend.
+A ROI Calculator built with Vue and using Google Sheets for the backend.
 
 ## Portability and Integration
 The code in this repo should be fairly portable, but there are a few things that will need to be accounted for.
