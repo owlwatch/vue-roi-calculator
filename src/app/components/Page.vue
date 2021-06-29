@@ -76,19 +76,11 @@ export default {
   watch: {
     display(value){
       if( value === 'active' ){
-        // lets scroll to the siblings
-        const headroom = $('header').data().headroom;
-        if( headroom ){
-            headroom.unpin();
-            headroom.freeze();
-        }
         let $el = $(this.$el).prev();
         if( !$el.length ) $el = $(this.$el).parent();
         $('html,body').animate({
             scrollTop : $($el).offset().top - $('body').offset().top
-        }, 400, () => {
-            if(headroom)  headroom.unfreeze()
-        })
+        }, 400);
       }
     }
   }

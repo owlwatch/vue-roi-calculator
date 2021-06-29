@@ -1,8 +1,12 @@
 <?php
-
 /**
- * This is a simplified example of what the endpoint is doing in wordpress
+ * This is a simplified example of what the endpoint is doing in wordpress.
+ * Some of the code is specific to the gitpod environment
  */
+
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Origin: '.$_SERVER['HTTP_ORIGIN']);
+
 $save_dir = __DIR__.'/files';
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     header('Content-Type: application/json; charset="utf-8"');
@@ -56,7 +60,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     file_put_contents($file, base64_decode($pdf));
     
     // $url = get_permalink().'roi-pdf/'.md5($signature).'/';
-    $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $base_url = "https://{$_SERVER[HTTP_HOST]}{$_SERVER[REQUEST_URI]}";
 
 
     echo json_encode([
@@ -76,7 +80,7 @@ else {
         if( preg_match('/\.pdf$/', $f ) ){
             header('Content-Type: application/pdf');
             header("Content-Disposition: attachment; filename=\"$f\"");
-            readfile($this->save_dir.'/'.$filename.'/'.$f );
+            readfile($save_dir.'/'.$filename.'/'.$f );
             exit;
         }
     }

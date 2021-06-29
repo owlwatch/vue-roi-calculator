@@ -15,7 +15,7 @@
         h3.modal-title(:id="`${id}-label`") Receive your custom report
         button.close(
           type="button" 
-          data-dismiss="modal"
+          data-bs-dismiss="modal"
           aria-label="Close"
         )
           span(aria-hidden="true") &times;

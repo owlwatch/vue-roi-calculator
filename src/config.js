@@ -1,4 +1,7 @@
 
+/**
+ * This is gitpod specific
+ */
 const appendPort = '8001' + '-';
 const base = process.env.GITPOD_WORKSPACE_URL;
 const server_url = [base.slice(0, 8), appendPort, base.slice(8)].join('');

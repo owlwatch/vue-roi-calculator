@@ -78,6 +78,7 @@ import PdfReport from './PdfReport';
 import {translate} from '../helpers/lang';
 import {currencyFormatter} from '../helpers/formatters';
 import numeral from 'numeral';
+import BSN from 'bootstrap.native';
 
 const $ = jQuery;
 
@@ -121,6 +122,15 @@ export default {
   computed : {
     complete(){
       return true;
+    },
+    modal(){
+      if( this.$refs.gate.$el ){
+        if( !$(this.$refs.gate.$el).data('modal') ){
+          $(this.$refs.gate.$el).data('modal',new BSN.Modal(this.$refs.gate.$el,{backdrop: true}));
+        }
+        return $(this.$refs.gate.$el).data('modal');
+      }
+      return null;
     }
   },
 
@@ -135,7 +145,7 @@ export default {
   methods : {
     download(){
       if( this.gated ){
-        $(this.$refs.gate.$el).modal('show');
+       this.modal.show();
       }
       else {
         window.location = this.pdfUrl;
@@ -145,23 +155,16 @@ export default {
       this.pdfUrl = url;
     },
     ungate(){
-      $(this.$refs.gate.$el).modal('hide');
+      this.modal.hide();
       this.gated = false;
       window.location = this.pdfUrl;
     },
     handleChartClick(id){
       // open the corresponding details
       this.$refs.details.select(id);
-      const headroom = $('header').data().headroom;
-      if( headroom ){
-          headroom.unpin();
-          headroom.freeze();
-      }
       $('html,body').animate({
           scrollTop : $(this.$refs.details.$el).offset().top - $('body').offset().top - 50
-      }, 400, () => {
-          if(headroom)  headroom.unfreeze()
-      })
+      }, 400);
     }
   }
 };
