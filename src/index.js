@@ -3,7 +3,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import Vue from 'vue';
-import App from './components/App';
+import App from './app/App';
 import config from './config';
 
 new Vue({

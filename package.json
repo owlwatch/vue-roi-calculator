@@ -35,6 +35,9 @@
     "debounce": "^1.2.1",
     "html-to-pdfmake": "^2.2.6",
     "markdown": "^0.5.0",
+    "markdown-it": "^12.0.6",
+    "mathjs": "^9.4.3",
+    "numeral": "^2.0.6",
     "pdfmake": "^0.1.71",
     "regenerator-runtime": "^0.13.7",
     "sharer": "^1.4.0",
@@ -42,6 +45,8 @@
     "vue": "^2.6.14",
     "vue-chartjs": "^3.5.1",
     "vue-hot-reload-api": "^2.3.4",
+    "vue-range-slider": "^0.6.0",
+    "vue-simple-floating-labels": "^1.0.4",
     "vue-smooth-reflow": "^0.1.12"
   }
 }
