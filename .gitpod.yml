@@ -11,7 +11,7 @@ tasks:
 
 ports:
   - port: 1234
-    onOpen : ignore
+    onOpen : open-browser
     visibility: public
 
   - port: 3000
