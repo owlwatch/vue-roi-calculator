@@ -74,7 +74,7 @@ export default {
 
     const {google_sheet_id, google_api_key} = this.config.fields;
 
-    this.config.pdfUrl = (window.location.pathname.replace(/\/$/,''))+'/roi-pdf/';
+    this.config.pdfUrl = this.config.pdf_endpoint;
 
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${google_sheet_id}/values:batchGet/?key=${google_api_key}&${ranges}`;
     const response = await axios.get(url);

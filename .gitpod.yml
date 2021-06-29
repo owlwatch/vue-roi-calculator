@@ -1,16 +1,26 @@
 tasks:
-  - init: >
+
+  - name: Apache
+    command: apachectl start;
+
+  - name: Parcel
+    init: >
       npm install &&
-      sed -ri "s/hostname\s+\s':'\s+\sprocess\.env\.HMR_PORT/hostname.replace(\/^(\\d+)\/, process.env.HMR_PORT) + ':443'/" ./node_modules/parcel-bundler/src/builtins/hmr-runtime.js &&
-  - command: > 
-      npm start &&
-      gp await-port 1234 && gp preview $(gp url 1234)
+      sed -ri "s/hostname\s+\s':'\s+\sprocess\.env\.HMR_PORT/hostname.replace(\/^(\\d+)\/, process.env.HMR_PORT) + ':443'/" ./node_modules/parcel-bundler/src/builtins/hmr-runtime.js
+    command: npm start && gp await-port 1234 && gp preview $(gp url 1234)
 
 ports:
   - port: 1234
     onOpen : ignore
+    visibility: public
+
   - port: 3000
     onOpen : ignore
+    visibility: public
+
+  - port: 8001
+    onOpen : ignore
+    visibility: public
 
 vscode:
   extensions:
